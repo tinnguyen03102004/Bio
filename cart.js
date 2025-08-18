@@ -2,8 +2,8 @@
 const LS_KEY = 'kadie_cart';
 
 const products = [
-  {id:'hellstar-hoodie', name:'Hellstar Classic Hoodie', price: 650000, image:'assets/p1.jpg', sizes:['S','M','L']},
-  {id:'hellstar-sweatpants', name:'Hellstar Classic Sweatpants', price: 479000, image:'assets/p2.jpg', sizes:['S','M','L']},
+  {id:'kadie-hoodie', name:'Kadie.Nuwrld Classic Hoodie', price: 650000, image:'assets/p1.jpg', sizes:['S','M','L']},
+  {id:'kadie-sweatpants', name:'Kadie.Nuwrld Classic Sweatpants', price: 479000, image:'assets/p2.jpg', sizes:['S','M','L']},
   {id:'classic-tee-green', name:'Classic T‑Shirt — Green', price: 349000, image:'assets/p3.jpg', sizes:['S','M','L']},
   {id:'classic-tee-orange', name:'Classic T‑Shirt — Orange', price: 349000, image:'assets/p4.jpg', sizes:['S','M','L']},
 ];
