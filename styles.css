@@ -33,7 +33,6 @@ nav{display:flex;align-items:center}
 nav > .cart-button{margin-left:16px}
 .icon{width:18px;height:18px;display:inline-block}
 
-.mobile-menu-button,
 .mobile-menu{display:none}
 
 .hero{padding:42px 20px 8px 20px;}
@@ -98,8 +97,6 @@ nav > .cart-button{margin-left:16px}
   .checkout-layout{grid-template-columns:1fr}
   .two-col{grid-template-columns:1fr}
 
-  .mobile-menu-button{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);width:72px;height:72px;border:1px solid var(--text);border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;z-index:20}
-  .mobile-menu-button img{width:60px;height:60px;border-radius:50%;object-fit:cover}
   .mobile-menu{position:fixed;inset:0;background:#fff;display:none;flex-direction:column;padding:16px;z-index:30}
   .mobile-menu.open{display:flex}
   .mobile-menu header{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
