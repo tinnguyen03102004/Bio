@@ -55,9 +55,6 @@
     © <span id="y"></span> Kadie.Nuwrld · Static shop (COD + MoMo)
   </footer>
 
-  <button class="mobile-menu-button" id="openMobileMenu">
-    <img src="logo.png" alt="Kadie.Nuwrld logo">
-  </button>
   <div class="mobile-menu" id="mobileMenu">
     <header>
       <img src="logo.png" alt="Kadie.Nuwrld logo">
@@ -116,16 +113,10 @@
       navLinks.classList.remove('open');
     });
 
-    const openMobileMenu = document.getElementById('openMobileMenu');
     const closeMobileMenu = document.getElementById('closeMobileMenu');
-    if(openMobileMenu){
-      openMobileMenu.addEventListener('click', () => {
-        mobileMenu.classList.add('open');
-      });
-      closeMobileMenu.addEventListener('click', () => {
-        mobileMenu.classList.remove('open');
-      });
-    }
+    closeMobileMenu.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+    });
   </script>
 </body>
 </html>
