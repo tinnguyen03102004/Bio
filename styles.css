@@ -25,6 +25,7 @@ nav{display:flex;align-items:center}
 .brand h1{font-size:18px;letter-spacing:.24em;margin:0}
 
 .nav-links{display:flex;gap:26px;align-items:center;margin-left:auto}
+.close-menu{display:none;background:none;border:none;font-size:24px;cursor:pointer;margin-left:auto}
 .nav-link{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#000000}
 .cart-button{
   display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;padding:8px 12px;border-radius:999px;cursor:pointer
@@ -67,16 +68,27 @@ nav > .cart-button{margin-left:16px}
 .checkout{margin:0 16px 14px 16px;padding:12px;border:1px solid var(--line);border-radius:14px;background:#111;color:#fff;cursor:pointer;text-align:center}
 .badge{display:inline-block;border:1px solid var(--line);padding:4px 8px;border-radius:999px;font-size:11px;margin-left:8px}
 
+.product-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);opacity:0;pointer-events:none;transition:.2s}
+.product-overlay.open{opacity:1;pointer-events:auto}
+.product-modal{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;width:90%;max-width:400px;max-height:90%;overflow:auto;opacity:0;pointer-events:none;transition:.2s}
+.product-modal.open{opacity:1;pointer-events:auto}
+.product-modal img{border:1px solid var(--line);border-radius:8px;margin-bottom:12px}
+.product-modal .close-product{position:absolute;top:8px;right:8px;background:none;border:none;font-size:24px;cursor:pointer}
+.product-modal h3{margin:0 0 8px 0}
+.product-modal #detailPrice{margin-bottom:12px}
+
 @media(max-width:600px){
   nav{position:relative}
-  .menu-button{display:flex;align-items:center;justify-content:center}
-  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;gap:16px;padding:16px;border-bottom:1px solid var(--line)}
+  .menu-button{display:flex;align-items:center;justify-content:center;margin-left:auto}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;gap:16px;padding:16px;border-bottom:1px solid var(--line);align-items:flex-start}
   .nav-links.open{display:flex}
-  .brand{flex:1;justify-content:center}
+  .close-menu{display:block}
+  .brand{justify-content:flex-start;margin-right:auto}
+  .brand-logo{width:60px;height:60px}
   .brand h1{display:none}
-  .cart-button{border:none;padding:0;margin-left:0}
+  .cart-button{border:none;padding:0;margin-left:8px}
   .cart-button .label{display:none}
-  nav > .cart-button{margin-left:0}
+  nav > .cart-button{margin-left:8px}
   .grid{display:flex;overflow-x:auto;gap:16px;padding:24px 20px}
   .grid .card{flex:0 0 80%}
   .page-title{font-size:32px}

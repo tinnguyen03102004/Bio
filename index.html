@@ -11,16 +11,17 @@
   <header>
     <div class="container">
       <nav>
+        <div class="brand">
+          <img class="brand-logo" src="logo.png" alt="Kadie.Nuwrld logo">
+          <h1>KADIE.NUWRLD</h1>
+        </div>
         <button class="menu-button" id="menuBtn">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path d="M3 6h18M3 12h18M3 18h18"/>
           </svg>
         </button>
-        <div class="brand">
-          <img class="brand-logo" src="logo.png" alt="Kadie.Nuwrld logo">
-          <h1>KADIE.NUWRLD</h1>
-        </div>
         <div class="nav-links" id="navLinks">
+          <button class="close-menu" id="closeMenu">&times;</button>
           <a class="nav-link" href="#">.STUDIOS</a>
           <a class="nav-link" href="#">CAPSULE</a>
           <a class="nav-link" href="#">SPORTS</a>
@@ -58,7 +59,7 @@
   <aside class="drawer" id="drawer">
     <header>
       <strong>Giỏ hàng</strong>
-      <button class="cart-button" id="closeCart">Đóng</button>
+      <button class="cart-button" id="closeCart">&times;</button>
     </header>
     <div class="items" id="cartItems"></div>
     <div class="subtotal">
@@ -71,13 +72,26 @@
     <a class="checkout" href="checkout.html">Thanh toán →</a>
   </aside>
 
+  <div class="product-overlay" id="productOverlay"></div>
+  <div class="product-modal" id="productModal">
+    <button class="close-product" id="closeProduct">&times;</button>
+    <img id="detailImage" src="" alt="">
+    <h3 id="detailName"></h3>
+    <div id="detailPrice"></div>
+    <div class="size-row" id="detailSizes"></div>
+  </div>
+
   <script src="cart.js"></script>
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
     const menuBtn = document.getElementById('menuBtn');
     const navLinks = document.getElementById('navLinks');
+    const closeMenu = document.getElementById('closeMenu');
     menuBtn.addEventListener('click', () => {
       navLinks.classList.toggle('open');
+    });
+    closeMenu.addEventListener('click', () => {
+      navLinks.classList.remove('open');
     });
   </script>
 </body>

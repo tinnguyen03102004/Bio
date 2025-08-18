@@ -54,7 +54,7 @@ function renderGrid(){
   if(!el) return;
   el.innerHTML = products.map(p => `
     <article class="card">
-      <div class="imgwrap"><img src="${p.image}" alt="${p.name}" loading="lazy"></div>
+      <div class="imgwrap" onclick="showProductDetail('${p.id}')"><img src="${p.image}" alt="${p.name}" loading="lazy"></div>
       <h3 class="title">${p.name}</h3>
       <div class="price">From ${formatCurrency(p.price)}</div>
       <div class="size-row">
@@ -101,9 +101,31 @@ function openDrawer(){
   document.getElementById('drawer').classList.add('open'); 
   document.getElementById('overlay').classList.add('open'); 
 }
-function closeDrawer(){ 
-  document.getElementById('drawer').classList.remove('open'); 
-  document.getElementById('overlay').classList.remove('open'); 
+function closeDrawer(){
+  document.getElementById('drawer').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+}
+
+function showProductDetail(id){
+  const p = products.find(x=>x.id===id);
+  if(!p) return;
+  const img = document.getElementById('detailImage');
+  const name = document.getElementById('detailName');
+  const price = document.getElementById('detailPrice');
+  const sizes = document.getElementById('detailSizes');
+  if(!img || !name || !price || !sizes) return;
+  img.src = p.image;
+  img.alt = p.name;
+  name.textContent = p.name;
+  price.textContent = formatCurrency(p.price);
+  sizes.innerHTML = p.sizes.map(s => `<button class="size-btn" onclick="addToCart('${p.id}','${s}')">${s}</button>`).join('');
+  document.getElementById('productModal').classList.add('open');
+  document.getElementById('productOverlay').classList.add('open');
+}
+
+function closeProductModal(){
+  document.getElementById('productModal').classList.remove('open');
+  document.getElementById('productOverlay').classList.remove('open');
 }
 
 function getOrderFromStorage(){
@@ -149,4 +171,6 @@ if(document.getElementById('openCart')){
   document.getElementById('overlay').addEventListener('click', closeDrawer);
   renderGrid();
   renderCart();
+  document.getElementById('closeProduct').addEventListener('click', closeProductModal);
+  document.getElementById('productOverlay').addEventListener('click', closeProductModal);
 }
