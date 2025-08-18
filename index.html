@@ -55,6 +55,23 @@
     © <span id="y"></span> Kadie.Nuwrld · Static shop (COD + MoMo)
   </footer>
 
+  <button class="mobile-menu-button" id="openMobileMenu">
+    <img src="logo.png" alt="Kadie.Nuwrld logo">
+  </button>
+  <div class="mobile-menu" id="mobileMenu">
+    <header>
+      <img src="logo.png" alt="Kadie.Nuwrld logo">
+      <button class="close-mobile-menu" id="closeMobileMenu">&times;</button>
+    </header>
+    <nav class="menu-links">
+      <a href="#" class="active">Studios</a>
+      <a href="#">Capsule</a>
+      <a href="#">Sports</a>
+      <a href="#">Log in</a>
+      <a href="#">Create account</a>
+    </nav>
+  </div>
+
   <div class="drawer-overlay" id="overlay"></div>
   <aside class="drawer" id="drawer">
     <header>
@@ -93,6 +110,18 @@
     closeMenu.addEventListener('click', () => {
       navLinks.classList.remove('open');
     });
+
+    const openMobileMenu = document.getElementById('openMobileMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMobileMenu = document.getElementById('closeMobileMenu');
+    if(openMobileMenu){
+      openMobileMenu.addEventListener('click', () => {
+        mobileMenu.classList.add('open');
+      });
+      closeMobileMenu.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+      });
+    }
   </script>
 </body>
 </html>
