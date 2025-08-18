@@ -17,16 +17,19 @@ header{
 }
 .container{max-width:1280px;margin:0 auto;padding:20px}
 
-nav{display:flex;align-items:center;justify-content:space-between}
+nav{display:flex;align-items:center}
 .brand{display:flex;align-items:center;gap:12px}
-.brand-logo{width:36px;height:36px;border-radius:999px;border:1px solid var(--text);display:grid;place-items:center;font-weight:700}
+.brand-logo{width:36px;height:36px;border-radius:999px;border:1px solid var(--text);object-fit:cover}
+.menu-button{background:none;border:none;padding:0;display:none;cursor:pointer}
+.menu-button .icon{width:24px;height:24px}
 .brand h1{font-size:18px;letter-spacing:.24em;margin:0}
 
-.nav-links{display:flex;gap:26px;align-items:center}
+.nav-links{display:flex;gap:26px;align-items:center;margin-left:auto}
 .nav-link{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#000000}
 .cart-button{
   display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;padding:8px 12px;border-radius:999px;cursor:pointer
 }
+nav > .cart-button{margin-left:16px}
 .icon{width:18px;height:18px;display:inline-block}
 
 .hero{padding:42px 20px 8px 20px;}
@@ -65,12 +68,17 @@ nav{display:flex;align-items:center;justify-content:space-between}
 .badge{display:inline-block;border:1px solid var(--line);padding:4px 8px;border-radius:999px;font-size:11px;margin-left:8px}
 
 @media(max-width:600px){
-  nav{flex-direction:row;align-items:center;justify-content:space-between}
-  .nav-links{display:none}
+  nav{position:relative}
+  .menu-button{display:flex;align-items:center;justify-content:center}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;gap:16px;padding:16px;border-bottom:1px solid var(--line)}
+  .nav-links.open{display:flex}
   .brand{flex:1;justify-content:center}
   .brand h1{display:none}
-  .cart-button{border:none;padding:0}
+  .cart-button{border:none;padding:0;margin-left:0}
   .cart-button .label{display:none}
+  nav > .cart-button{margin-left:0}
+  .grid{display:flex;overflow-x:auto;gap:16px;padding:24px 20px}
+  .grid .card{flex:0 0 80%}
   .page-title{font-size:32px}
   .checkout-layout{grid-template-columns:1fr}
   .two-col{grid-template-columns:1fr}

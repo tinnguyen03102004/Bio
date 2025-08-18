@@ -11,29 +11,34 @@
   <header>
     <div class="container">
       <nav>
+        <button class="menu-button" id="menuBtn">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M3 6h18M3 12h18M3 18h18"/>
+          </svg>
+        </button>
         <div class="brand">
-          <div class="brand-logo">K</div>
+          <img class="brand-logo" src="logo.png" alt="Kadie.Nuwrld logo">
           <h1>KADIE.NUWRLD</h1>
         </div>
-        <div class="nav-links">
+        <div class="nav-links" id="navLinks">
           <a class="nav-link" href="#">.STUDIOS</a>
           <a class="nav-link" href="#">CAPSULE</a>
           <a class="nav-link" href="#">SPORTS</a>
-          <button class="cart-button" id="openCart">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/>
-              <path d="M6 6l-2-2H2"/>
-            </svg>
-            <span class="label">Giỏ hàng</span>
-          </button>
         </div>
+        <button class="cart-button" id="openCart">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/>
+            <path d="M6 6l-2-2H2"/>
+          </svg>
+          <span class="label">Giỏ hàng</span>
+        </button>
       </nav>
-    </div>
+      </div>
   </header>
 
   <main>
     <section class="container hero">
-      <h2 class="page-title">HELLSTAR STUDIOS</h2>
+      <h2 class="page-title">Kadie.Nuwrld STUDIOS</h2>
       <div class="filter-bar">
         <span class="small">NEW DROP</span>
         <span class="small">Sắp xếp · Bộ lọc</span>
@@ -69,6 +74,11 @@
   <script src="cart.js"></script>
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
   </script>
 </body>
 </html>
