@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout — Kadie.Nuwrld</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="brand">
+          <div class="brand-logo">K</div>
+          <h1>CHECKOUT</h1>
+          <span class="badge">COD + MoMo</span>
+        </div>
+        <div><a class="cart-button" href="index.html">← Tiếp tục mua</a></div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" style="display:grid;gap:18px;grid-template-columns:1fr 1fr;max-width:1280px">
+    <section style="border:1px solid var(--line);border-radius:16px;padding:16px;background:#fff">
+      <h2 style="margin:0 0 12px 0;font-size:18px">Thông tin giao hàng</h2>
+      <form id="orderForm">
+        <div style="display:grid;gap:12px;grid-template-columns:1fr 1fr">
+          <label>Họ tên<br><input required name="fullname" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--text)"></label>
+          <label>Số điện thoại<br><input required name="phone" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--text)"></label>
+        </div>
+        <label>Địa chỉ<br><input required name="address" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--text)"></label>
+        <label>Ghi chú (tuỳ chọn)<br><input name="note" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--text)"></label>
+        <div style="margin-top:12px">
+          <label><input type="radio" name="payment" value="COD" checked> Thanh toán khi nhận hàng (COD)</label><br>
+          <label><input type="radio" name="payment" value="MoMo"> Thanh toán bằng MoMo</label>
+        </div>
+      </form>
+    </section>
+
+    <section style="border:1px solid var(--line);border-radius:16px;padding:16px;background:#fff">
+      <h2 style="margin:0 0 12px 0;font-size:18px">Đơn hàng</h2>
+      <div id="summary"></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;border-top:1px solid var(--line);padding-top:12px">
+        <span>Mã đơn</span><strong id="orderCode"></strong>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
+        <span>Tổng cộng</span><strong id="grandTotal">0₫</strong>
+      </div>
+    </section>
+
+    <section id="momoBox" style="display:none;border:1px solid var(--line);border-radius:16px;padding:16px;background:#fff">
+      <h2 style="margin:0 0 12px 0;font-size:18px">Thanh toán MoMo</h2>
+      <p class="small">Quét QR bên dưới để chuyển tiền tới <strong>MoMo 0935674458</strong>. Nhập <strong>nội dung chuyển khoản</strong> = <code id="codeInNote"></code> để shop đối soát.</p>
+      <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+        <img src="assets/momo-qr.svg" alt="MoMo QR" style="width:180px;height:180px;border:1px solid var(--line);border-radius:12px;background:#fff">
+        <div class="small">
+          <div>Không quét được? Chuyển tiền thủ công tới: <strong>0935674458</strong></div>
+          <div>Chủ ví: <em>(điền tên chủ ví của bạn)</em></div>
+        </div>
+      </div>
+    </section>
+
+    <section style="display:flex;gap:10px;flex-wrap:wrap">
+      <button class="checkout" id="confirmBtn">Xác nhận đặt hàng</button>
+      <button class="cart-button" id="copyBtn">Sao chép chi tiết đơn</button>
+    </section>
+  </main>
+
+  <script src="cart.js"></script>
+  <script>
+    const order = getOrderFromStorage();
+    const code = order.code;
+    document.getElementById('orderCode').textContent = code;
+    document.getElementById('codeInNote').textContent = code;
+
+    const paymentRadios = document.querySelectorAll('input[name="payment"]');
+    paymentRadios.forEach(r => r.addEventListener('change', () => {
+      document.getElementById('momoBox').style.display = (getPaymentMethod()==='MoMo' ? 'block':'none');
+    }));
+    document.getElementById('momoBox').style.display = (getPaymentMethod()==='MoMo' ? 'block':'none');
+
+    const sumEl = document.getElementById('summary');
+    if(order.items.length===0){
+      sumEl.innerHTML = '<p class="small">Giỏ hàng trống. <a href="index.html">Mua hàng</a></p>';
+    }else{
+      sumEl.innerHTML = order.items.map(item => `
+        <div class="line">
+          <img src="${item.image}" alt="${item.name}">
+          <div class="meta">
+            <div><strong>${item.name}</strong></div>
+            <div class="small">Size: ${item.size || '-'}</div>
+            <div class="small">x${item.qty}</div>
+          </div>
+          <div><strong>${formatCurrency(item.price*item.qty)}</strong></div>
+        </div>
+      `).join('');
+    }
+    document.getElementById('grandTotal').textContent = formatCurrency(order.total);
+
+    document.getElementById('confirmBtn').addEventListener('click', () => {
+      const formData = new FormData(document.getElementById('orderForm'));
+      const payload = collectOrder(Object.fromEntries(formData.entries()));
+      alert('Đặt hàng thành công!\nMã đơn: '+ payload.code +'\nChúng mình sẽ liên hệ xác nhận sớm.');
+      localStorage.removeItem('kadie_cart');
+      window.location.href = 'index.html';
+    });
+
+    document.getElementById('copyBtn').addEventListener('click', async () => {
+      const formData = new FormData(document.getElementById('orderForm'));
+      const payload = collectOrder(Object.fromEntries(formData.entries()));
+      const txt = buildTextPayload(payload);
+      await navigator.clipboard.writeText(txt);
+      alert('Đã sao chép. Bạn có thể dán vào Messenger/IG để chốt đơn.');
+    });
+
+    function getPaymentMethod(){
+      const checked = document.querySelector('input[name="payment"]:checked');
+      return checked ? checked.value : 'COD';
+    }
+  </script>
+</body>
+</html>

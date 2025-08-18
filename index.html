@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kadie.Nuwrld — Studios</title>
+  <link rel="stylesheet" href="styles.css">
+  <meta name="description" content="Kadie.Nuwrld — minimal street-chic apparel.">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="brand">
+          <div class="brand-logo">K</div>
+          <h1>KADIE.NUWRLD</h1>
+        </div>
+        <div class="nav-links">
+          <a class="nav-link" href="#">.STUDIOS</a>
+          <a class="nav-link" href="#">CAPSULE</a>
+          <a class="nav-link" href="#">SPORTS</a>
+          <button class="cart-button" id="openCart">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/>
+              <path d="M6 6l-2-2H2"/>
+            </svg>
+            Giỏ hàng
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="container hero">
+      <h2 class="page-title">HELLSTAR STUDIOS</h2>
+      <div class="filter-bar">
+        <span class="small">NEW DROP</span>
+        <span class="small">Sắp xếp · Bộ lọc</span>
+      </div>
+    </section>
+
+    <section class="grid container" id="productGrid">
+      <!-- Cards from cart.js -->
+    </section>
+  </main>
+
+  <footer class="footer small">
+    © <span id="y"></span> Kadie.Nuwrld · Static shop (COD + MoMo)
+  </footer>
+
+  <div class="drawer-overlay" id="overlay"></div>
+  <aside class="drawer" id="drawer">
+    <header>
+      <strong>Giỏ hàng</strong>
+      <button class="cart-button" id="closeCart">Đóng</button>
+    </header>
+    <div class="items" id="cartItems"></div>
+    <div class="subtotal">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span>Tạm tính</span>
+        <strong id="subtotal">0₫</strong>
+      </div>
+      <p class="small">Phí ship tính ở bước tiếp theo</p>
+    </div>
+    <a class="checkout" href="checkout.html">Thanh toán →</a>
+  </aside>
+
+  <script src="cart.js"></script>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
