@@ -11,11 +11,11 @@
   <header>
     <div class="container">
       <nav>
-        <div class="brand">
+        <a class="brand" href="index.html">
           <img class="brand-logo" src="logo.png" alt="Kadie.Nuwrld logo">
           <h1>KADIE.NUWRLD</h1>
-        </div>
-        <button class="menu-button" id="menuBtn">
+        </a>
+        <button class="menu-button" id="menuBtn" aria-label="Menu">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path d="M3 6h18M3 12h18M3 18h18"/>
           </svg>
@@ -104,15 +104,19 @@
     const menuBtn = document.getElementById('menuBtn');
     const navLinks = document.getElementById('navLinks');
     const closeMenu = document.getElementById('closeMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
     menuBtn.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
+      if(window.innerWidth <= 600){
+        mobileMenu.classList.add('open');
+      } else {
+        navLinks.classList.toggle('open');
+      }
     });
     closeMenu.addEventListener('click', () => {
       navLinks.classList.remove('open');
     });
 
     const openMobileMenu = document.getElementById('openMobileMenu');
-    const mobileMenu = document.getElementById('mobileMenu');
     const closeMobileMenu = document.getElementById('closeMobileMenu');
     if(openMobileMenu){
       openMobileMenu.addEventListener('click', () => {
