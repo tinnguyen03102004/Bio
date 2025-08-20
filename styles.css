@@ -10,8 +10,8 @@
   --btn-size: 44px;           /* kích thước hamburger/cart */
 
   /* NEW: đệm trên/dưới header tách riêng */
-  --header-pad-top: 12px;     /* đệm trên quanh logo */
-  --header-pad-bottom: 12px;  /* đệm dưới quanh logo */
+  --header-pad-top: 40px;     /* đệm trên quanh logo */
+  --header-pad-bottom: 80px;  /* đệm dưới quanh logo */
 
   /* (tùy chọn) fallback nếu còn nơi nào đó dùng --header-vpad */
   --header-vpad: 12px;
