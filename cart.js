@@ -15,25 +15,25 @@ const PRODUCTS = [
     id: 'studios-basic-tee-white',
     name: 'Studios Basic T‑Shirt (White)',
     price: 390000,
-    image: 'assets/tee_white.jpg'
+    image: 'assets/p1.png'
   },
   {
     id: 'studios-basic-tee-black',
     name: 'Studios Basic T‑Shirt (Black)',
     price: 390000,
-    image: 'assets/tee_black.jpg'
+    image: 'assets/p2.png'
   },
   {
     id: 'studios-cap',
     name: 'Studios Cap',
     price: 320000,
-    image: 'assets/cap.jpg'
+    image: 'assets/p3.png'
   },
   {
     id: 'studios-hoodie',
     name: 'Studios Hoodie',
     price: 690000,
-    image: 'assets/hoodie.jpg'
+    image: 'assets/p4.png'
   }
 ];
 
