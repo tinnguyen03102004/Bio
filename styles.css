@@ -124,10 +124,10 @@ nav > .cart-button{margin-left:16px}
   border-bottom:none;
 }
 .site-header .container{
-  max-width:none;
+  max-width:1280px;
   width:100%;
   padding:0 12px;  /* đệm ngang */
-  margin:0;
+  margin:0 auto;
 }
 
 /* Topbar cao theo logo + đệm (bỏ height cố định) */
