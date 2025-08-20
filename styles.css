@@ -4,6 +4,11 @@
   --muted:#6b6b6b;
   --line:#eaeaea;
   --accent:#111111;
+
+  /* === NEW: điều khiển kích thước header/logo bằng biến === */
+  --logo-size: 72px;   /* đổi 56 / 64 / 72 tuỳ ý */
+  --btn-size: 44px;    /* kích thước hamburger/cart */
+  --header-vpad: 8px;  /* đệm trên/dưới quanh logo */
 }
 
 *{box-sizing:border-box}
@@ -18,7 +23,7 @@ header{
 
 nav{display:flex;align-items:center}
 .brand{display:flex;align-items:center;gap:12px}
-/* ❌ Đã xoá rule .brand-mark cũ ở đây */
+/* (đã xoá rule .brand-mark cũ để tránh trùng) */
 .menu-button{background:none;border:none;padding:0;display:none;cursor:pointer}
 .menu-button .icon{width:24px;height:24px}
 .brand h1{font-size:18px;letter-spacing:.24em;margin:0}
@@ -92,7 +97,6 @@ nav > .cart-button{margin-left:16px}
   .nav-links.open{display:none}
   .close-menu{display:none}
   .brand{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);margin:0}
-  /* ❌ Đã xoá .brand-mark cũ ở đây luôn */
   .brand h1{display:none}
   nav > .cart-button .label{display:none}
   .hero{padding-top:96px}
@@ -111,83 +115,67 @@ nav > .cart-button{margin-left:16px}
   .menu-links a.active{background:#d8f0ff}
 }
 
-/* --- HEADER OVERRIDE --- */
+/* --- HEADER OVERRIDE (mới) --- */
 
-/* Header full-width, dính đỉnh */
-.site-header {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  background: #fff;
-  z-index: 1000;
-  border-bottom: 1px solid #eee;
+/* Header full-width + container không bó ngang */
+.site-header{
+  position:sticky;
+  top:0;
+  width:100%;
+  background:#fff;
+  z-index:1000;
+  border-bottom:1px solid #eee;
 }
-
-/* Container trong header: chiếm full ngang */
-.site-header .container {
-  max-width: none;
-  width: 100%;
-  padding: 0 12px;
-  margin: 0;
+.site-header .container{
+  max-width:none;
+  width:100%;
+  padding:0 12px;  /* đệm ngang */
+  margin:0;
 }
 
-/* Thanh 3 cột: menu - logo - cart */
-.topbar {
-  display: grid;
-  grid-template-columns: 44px 1fr 44px;
-  align-items: center;
-  height: 64px;
+/* Topbar cao theo logo + đệm (KHÔNG còn height:64px nữa) */
+.topbar{
+  display:grid;
+  grid-template-columns: var(--btn-size) 1fr var(--btn-size);
+  align-items:center;
+  height: calc(var(--logo-size) + (var(--header-vpad) * 2));
 }
 
-/* Nút icon (hamburger & cart) */
-.icon-btn {
-  width: 44px; height: 44px;
-  display: grid; place-items: center;
-  border: 1px solid #000;
-  border-radius: 6px;
-  background: #fff;
-  position: relative;
+/* Nút icon trái/phải */
+.icon-btn{
+  width:var(--btn-size);
+  height:var(--btn-size);
+  display:grid;place-items:center;
+  border:1px solid #000;
+  border-radius:6px;
+  background:#fff;
+  position:relative;
 }
-.icon-btn svg {
-  width: 22px; height: 22px;
-  color: #000;
+.icon-btn svg{width:22px;height:22px;color:#000}
+
+/* Logo giữa (theo biến — tự dãn header) */
+.brand-center{justify-self:center;display:grid;place-items:center}
+.brand-mark{
+  width:var(--logo-size);
+  height:var(--logo-size);
+  border-radius:50%;
+  object-fit:cover;
+  max-width:none; /* vượt qua img{max-width:100%} khi cần */
 }
 
-/* Logo giữa */
-.brand-center {
-  justify-self: center;
-  display: grid;
-  place-items: center;
-}
-.brand-mark {
-  width: 56px; height: 56px; /* chỉnh kích thước logo ở đây */
-  border-radius: 50%;
-  object-fit: cover;
+/* Badge giỏ hàng (như cũ) */
+.badge{
+  position:absolute;top:-4px;right:-4px;
+  min-width:16px;height:16px;padding:0 4px;border-radius:999px;
+  background:#ff4444;color:#fff;font-size:10px;line-height:16px;text-align:center;
+  display:none;
 }
 
-/* Badge số lượng giỏ hàng */
-.badge {
-  position: absolute;
-  top: -4px; right: -4px;
-  min-width: 16px; height: 16px;
-  padding: 0 4px;
-  border-radius: 999px;
-  background: #ff4444;
-  color: #fff;
-  font-size: 10px; line-height: 16px;
-  text-align: center;
-  display: none;
-}
+/* Mobile menu slide (giữ như cũ) */
+.mobile-menu{transform:translateX(-100%);transition:transform .3s ease}
+.mobile-menu.open{transform:translateX(0)}
 
-/* Ẩn chữ label trong nút icon */
-.cart-button .label,
-.icon-btn .label { display: none; }
-
-/* Mobile menu slide */
-.mobile-menu {
-  transform: translateX(-100%);
-  transition: transform .3s ease;
-}
-.mobile-menu.open {
-  transform: translateX(0);
+/* Gợi ý: logo nhỏ hơn trên mobile */
+@media(max-width:600px){
+  :root{ --logo-size:56px; }
 }
