@@ -18,12 +18,19 @@
         </svg>
       </button>
 
-      <!-- Logo giữa -->
+      <!-- Logo -->
       <a class="brand-center" href="index.html" aria-label="Trang chủ Kadie.Nuwrld">
         <img class="brand-mark" src="logo.png" alt="">
       </a>
 
-      <!-- Cart (phải) -->
+      <!-- Liên kết điều hướng (desktop) -->
+      <div class="nav-links">
+        <a class="nav-link" href="#">.STUDIOS</a>
+        <a class="nav-link" href="#">CAPSULE</a>
+        <a class="nav-link" href="#">SPORTS</a>
+      </div>
+
+      <!-- Cart -->
       <button class="icon-btn" id="openCart" aria-label="Mở giỏ hàng">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
           <path d="M6 6h15l-1.5 9h-12z" stroke-width="1.6" stroke-linejoin="round"/>
@@ -33,24 +40,12 @@
         <span class="badge" id="cartCount" aria-live="polite">0</span>
       </button>
     </nav>
-
-    <!-- Giữ navLinks nếu bạn dùng cho desktop -->
-    <div class="nav-links" id="navLinks" hidden>
-      <button class="close-menu" id="closeMenu" aria-label="Đóng menu">&times;</button>
-      <a class="nav-link" href="#">.STUDIOS</a>
-      <a class="nav-link" href="#">CAPSULE</a>
-      <a class="nav-link" href="#">SPORTS</a>
-    </div>
   </div>
 </header>
 
   <main>
     <section class="container hero">
       <h2 class="page-title">Kadie.Nuwrld STUDIOS</h2>
-      <div class="filter-bar">
-        <span class="small">NEW DROP</span>
-        <span class="small">Sắp xếp · Bộ lọc</span>
-      </div>
     </section>
 
     <section class="grid container" id="productGrid">
@@ -106,18 +101,9 @@
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
     const menuBtn = document.getElementById('menuBtn');
-    const navLinks = document.getElementById('navLinks');
-    const closeMenu = document.getElementById('closeMenu');
     const mobileMenu = document.getElementById('mobileMenu');
     menuBtn.addEventListener('click', () => {
-      if(window.innerWidth <= 600){
-        mobileMenu.classList.add('open');
-      } else {
-        navLinks.classList.toggle('open');
-      }
-    });
-    closeMenu.addEventListener('click', () => {
-      navLinks.classList.remove('open');
+      mobileMenu.classList.add('open');
     });
 
     const closeMobileMenu = document.getElementById('closeMobileMenu');

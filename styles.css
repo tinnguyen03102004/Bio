@@ -8,7 +8,7 @@
   /* === NEW: điều khiển kích thước header/logo bằng biến === */
   --logo-size: 72px;   /* đổi 56 / 64 / 72 tuỳ ý */
   --btn-size: 44px;    /* kích thước hamburger/cart */
-  --header-vpad: 8px;  /* đệm trên/dưới quanh logo */
+  --header-vpad: 12px; /* đệm trên/dưới quanh logo */
 }
 
 *{box-sizing:border-box}
@@ -17,7 +17,7 @@ img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 
 header{
-  position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--line);
+  position:sticky;top:0;z-index:10;background:#fff;
 }
 .container{max-width:1280px;margin:0 auto;padding:20px}
 
@@ -28,8 +28,7 @@ nav{display:flex;align-items:center}
 .menu-button .icon{width:24px;height:24px}
 .brand h1{font-size:18px;letter-spacing:.24em;margin:0}
 
-.nav-links{display:flex;gap:26px;align-items:center;justify-content:flex-end;margin-left:auto}
-.close-menu{display:none;background:none;border:none;font-size:24px;cursor:pointer;margin-left:auto}
+.nav-links{display:none;gap:26px;align-items:center;justify-content:flex-end}
 .nav-link{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#000000}
 .cart-button{
   display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;padding:8px 12px;border-radius:999px;cursor:pointer
@@ -48,7 +47,6 @@ nav > .cart-button{margin-left:16px}
   font-weight:300;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-.filter-bar{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:10px 0;margin-top:12px}
 .small{font-size:12px;color:var(--muted)}
 
 .grid{display:grid;gap:24px;padding:24px 20px;grid-template-columns:repeat(2,1fr)}
@@ -91,21 +89,7 @@ nav > .cart-button{margin-left:16px}
 .product-modal #detailPrice{margin-bottom:12px}
 
 @media(max-width:600px){
-  nav{position:relative;justify-content:center;display:flex}
-  .menu-button,
-  nav > .cart-button{
-    position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border:none;border-radius:0;background:none;padding:0;display:flex;align-items:center;justify-content:center;
-  }
-  .menu-button{left:0;display:flex}
-  nav > .cart-button{right:0;margin-left:0}
-  .menu-button .icon,
-  nav > .cart-button .icon{width:24px;height:24px}
-  .nav-links{display:none!important}
-  .nav-links.open{display:none}
-  .close-menu{display:none}
-  .brand{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);margin:0}
-  .brand h1{display:none}
-  nav > .cart-button .label{display:none}
+  .nav-links{display:none;}
   .hero{padding-top:0}
   .grid{display:flex;overflow-x:auto;gap:16px;padding:24px 20px}
   .grid .card{flex:0 0 80%}
@@ -125,13 +109,14 @@ nav > .cart-button{margin-left:16px}
 /* --- HEADER OVERRIDE (mới) --- */
 
 /* Header full-width + container không bó ngang */
+
 .site-header{
   position:sticky;
   top:0;
   width:100%;
   background:#fff;
   z-index:1000;
-  border-bottom:1px solid #eee;
+  border-bottom:none;
 }
 .site-header .container{
   max-width:none;
@@ -145,7 +130,7 @@ nav > .cart-button{margin-left:16px}
   display:grid;
   grid-template-columns: var(--btn-size) 1fr var(--btn-size);
   align-items:center;
-  height: calc(var(--logo-size) + (var(--header-vpad) * 2));
+  padding: var(--header-vpad) 0;
 }
 
 /* Nút icon trái/phải */
@@ -184,11 +169,13 @@ nav > .cart-button{margin-left:16px}
 
 /* Gợi ý: logo lớn hơn trên mobile */
 @media(max-width:600px){
-  :root{ --logo-size:144px; }
+  :root{ --logo-size:120px; }
 }
 
 @media(min-width:601px){
   #menuBtn{display:none;}
-  .topbar{grid-template-columns:1fr var(--btn-size);}
+  .topbar{grid-template-columns:auto 1fr var(--btn-size);}
   .brand-center{justify-self:start;}
+  .nav-links{display:flex;justify-self:end;margin-right:16px;}
+  .site-header .container{padding:0 24px;}
 }
