@@ -110,3 +110,86 @@ nav > .cart-button{margin-left:16px}
   .menu-links{display:flex;flex-direction:column;gap:16px;font-size:18px}
   .menu-links a.active{background:#d8f0ff}
 }
+/* --- HEADER OVERRIDE --- */
+
+/* Reset nhỏ */
+html, body { margin: 0; }
+
+/* Header full-width, dính đỉnh */
+.site-header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 1000;
+  border-bottom: 1px solid #eee; /* gạch mảnh dưới */
+}
+
+/* Container trong header: chiếm full ngang */
+.site-header .container {
+  max-width: none;
+  width: 100%;
+  padding: 0 12px;
+  margin: 0;
+}
+
+/* Thanh 3 cột: menu - logo - cart */
+.topbar {
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  align-items: center;
+  height: 64px;
+}
+
+/* Nút icon (hamburger & cart) */
+.icon-btn {
+  width: 44px; height: 44px;
+  display: grid; place-items: center;
+  border: 1px solid #000;
+  border-radius: 6px;
+  background: #fff;
+  position: relative;
+}
+.icon-btn svg {
+  width: 22px; height: 22px;
+  color: #000;
+}
+
+/* Logo giữa */
+.brand-center {
+  justify-self: center;
+  display: grid;
+  place-items: center;
+}
+.brand-mark {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Badge số lượng giỏ hàng */
+.badge {
+  position: absolute;
+  top: -4px; right: -4px;
+  min-width: 16px; height: 16px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: #ff4444;
+  color: #fff;
+  font-size: 10px; line-height: 16px;
+  text-align: center;
+  display: none; /* ẩn mặc định, hiện khi > 0 */
+}
+
+/* Ẩn chữ label trong nút icon */
+.cart-button .label,
+.icon-btn .label { display: none; }
+
+/* Mobile menu slide */
+.mobile-menu {
+  transform: translateX(-100%);
+  transition: transform .3s ease;
+}
+.mobile-menu.open {
+  transform: translateX(0);
+}
