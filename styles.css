@@ -10,11 +10,11 @@
   --btn-size: 44px;           /* kích thước hamburger/cart */
 
   /* NEW: đệm trên/dưới header tách riêng */
-  --header-pad-top: 40px;     /* đệm trên quanh logo */
-  --header-pad-bottom: 80px;  /* đệm dưới quanh logo */
+  --header-pad-top: 50px;     /* đệm trên quanh logo */
+  --header-pad-bottom: 50px;  /* đệm dưới quanh logo */
 
   /* (tùy chọn) fallback nếu còn nơi nào đó dùng --header-vpad */
-  --header-vpad: 77px;
+  --header-vpad: 50px;
 }
 
 *{box-sizing:border-box}
@@ -35,7 +35,7 @@ nav{display:flex;align-items:center}
 .brand h1{font-size:18px;letter-spacing:.24em;margin:0}
 
 .nav-links{display:none;gap:26px;align-items:center;justify-content:flex-end}
-.nav-link{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#000000}
+.nav-link{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#fff}
 .cart-button{
   display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;padding:8px 12px;border-radius:999px;cursor:pointer
 }
@@ -119,7 +119,8 @@ nav > .cart-button{margin-left:16px}
   position:sticky;
   top:0;
   width:100%;
-  background:#fff;
+  background:#000;
+  color:#fff;
   z-index:1000;
   border-bottom:none;
 }
@@ -151,7 +152,7 @@ nav > .cart-button{margin-left:16px}
   background:none;
   position:relative;
 }
-.icon-btn svg{width:22px;height:22px;color:#000}
+.icon-btn svg{width:22px;height:22px;color:#fff}
 
 /* Logo giữa (theo biến — tự dãn header) */
 .brand-center{justify-self:center;display:grid;place-items:center}
@@ -180,8 +181,8 @@ nav > .cart-button{margin-left:16px}
   :root{
     --logo-size:120px;
     /* tuỳ ý tinh chỉnh riêng trên mobile */
-    --header-pad-top: 100px;
-    --header-pad-bottom: 100px;
+    --header-pad-top: 50px;
+    --header-pad-bottom: 50px;
   }
 }
 
