@@ -40,7 +40,14 @@ nav > .cart-button{margin-left:16px}
 .mobile-menu{display:none}
 
 .hero{padding:0 20px 8px 20px;}
-.page-title{font-size:42px;letter-spacing:.18em;text-transform:uppercase;margin:0 0 8px 0;font-weight:800}
+.page-title{
+  font-size:42px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  margin:0 0 8px 0;
+  font-weight:300;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 .filter-bar{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:10px 0;margin-top:12px}
 .small{font-size:12px;color:var(--muted)}
 
@@ -145,10 +152,10 @@ nav > .cart-button{margin-left:16px}
 .icon-btn{
   width:var(--btn-size);
   height:var(--btn-size);
-  display:grid;place-items:center;
-  border:1px solid #000;
-  border-radius:6px;
-  background:#fff;
+  display:grid;
+  place-items:center;
+  border:none;
+  background:none;
   position:relative;
 }
 .icon-btn svg{width:22px;height:22px;color:#000}
@@ -175,7 +182,13 @@ nav > .cart-button{margin-left:16px}
 .mobile-menu{transform:translateX(-100%);transition:transform .3s ease}
 .mobile-menu.open{transform:translateX(0)}
 
-/* Gợi ý: logo nhỏ hơn trên mobile */
+/* Gợi ý: logo lớn hơn trên mobile */
 @media(max-width:600px){
-  :root{ --logo-size:72px; }
+  :root{ --logo-size:144px; }
+}
+
+@media(min-width:601px){
+  #menuBtn{display:none;}
+  .topbar{grid-template-columns:1fr var(--btn-size);}
+  .brand-center{justify-self:start;}
 }
