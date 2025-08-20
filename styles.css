@@ -180,8 +180,8 @@ nav > .cart-button{margin-left:16px}
   :root{
     --logo-size:120px;
     /* tuỳ ý tinh chỉnh riêng trên mobile */
-    --header-pad-top: 16px;
-    --header-pad-bottom: 12px;
+    --header-pad-top: 100px;
+    --header-pad-bottom: 100px;
   }
 }
 
