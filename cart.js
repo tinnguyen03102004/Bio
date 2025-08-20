@@ -67,9 +67,14 @@ function renderGrid(){
 function renderCart(){
   const itemsEl = document.getElementById('cartItems');
   const subtotalEl = document.getElementById('subtotal');
+  const countEl = document.getElementById('cartCount');
   if(!itemsEl || !subtotalEl) return;
 
   const cart = loadCart();
+  if(countEl){
+    const count = cart.items.reduce((s,i)=>s+i.qty,0);
+    countEl.style.display = count>0 ? 'block' : 'none';
+  }
   if(cart.items.length===0){
     itemsEl.innerHTML = `<p class="small">Giỏ trống.</p>`;
     subtotalEl.textContent = '0₫';
