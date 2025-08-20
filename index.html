@@ -8,33 +8,41 @@
   <meta name="description" content="Kadie.Nuwrld — minimal street-chic apparel.">
 </head>
 <body>
-  <header>
-    <div class="container">
-      <nav>
-        <a class="brand" href="index.html">
-          <img class="brand-mark" src="logo.png" alt="Kadie.Nuwrld logo">
-        </a>
-        <button class="menu-button" id="menuBtn" aria-label="Menu">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-            <path d="M3 6h18M3 12h18M3 18h18"/>
-          </svg>
-        </button>
-        <div class="nav-links" id="navLinks">
-          <button class="close-menu" id="closeMenu">&times;</button>
-          <a class="nav-link" href="#">.STUDIOS</a>
-          <a class="nav-link" href="#">CAPSULE</a>
-          <a class="nav-link" href="#">SPORTS</a>
-        </div>
-        <button class="cart-button" id="openCart">
-          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M6 6h15l-1.5 9h-12z"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/>
-            <path d="M6 6l-2-2H2"/>
-          </svg>
-          <span class="label">Giỏ hàng</span>
-        </button>
-      </nav>
-      </div>
-  </header>
+  <header class="site-header">
+  <div class="container">
+    <nav class="topbar" aria-label="Primary">
+      <!-- Hamburger (trái) -->
+      <button class="icon-btn" id="menuBtn" aria-label="Mở menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+          <path d="M3 6h18M3 12h18M3 18h18" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <!-- Logo giữa -->
+      <a class="brand-center" href="index.html" aria-label="Trang chủ Kadie.Nuwrld">
+        <img class="brand-mark" src="logo.png" alt="">
+      </a>
+
+      <!-- Cart (phải) -->
+      <button class="icon-btn" id="openCart" aria-label="Mở giỏ hàng">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+          <path d="M6 6h15l-1.5 9h-12z" stroke-width="1.6" stroke-linejoin="round"/>
+          <circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/>
+          <path d="M6 6l-2-2H2" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <span class="badge" id="cartCount" aria-live="polite">0</span>
+      </button>
+    </nav>
+
+    <!-- Giữ navLinks nếu bạn dùng cho desktop -->
+    <div class="nav-links" id="navLinks" hidden>
+      <button class="close-menu" id="closeMenu" aria-label="Đóng menu">&times;</button>
+      <a class="nav-link" href="#">.STUDIOS</a>
+      <a class="nav-link" href="#">CAPSULE</a>
+      <a class="nav-link" href="#">SPORTS</a>
+    </div>
+  </div>
+</header>
 
   <main>
     <section class="container hero">
