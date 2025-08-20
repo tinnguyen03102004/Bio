@@ -14,7 +14,7 @@
   --header-pad-bottom: 80px;  /* đệm dưới quanh logo */
 
   /* (tùy chọn) fallback nếu còn nơi nào đó dùng --header-vpad */
-  --header-vpad: 12px;
+  --header-vpad: 77px;
 }
 
 *{box-sizing:border-box}
