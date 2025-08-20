@@ -5,10 +5,16 @@
   --line:#eaeaea;
   --accent:#111111;
 
-  /* === NEW: điều khiển kích thước header/logo bằng biến === */
-  --logo-size: 72px;   /* đổi 56 / 64 / 72 tuỳ ý */
-  --btn-size: 44px;    /* kích thước hamburger/cart */
-  --header-vpad: 12px; /* đệm trên/dưới quanh logo */
+  /* === Điều khiển kích thước header/logo bằng biến === */
+  --logo-size: 72px;          /* đổi 56 / 64 / 72 tuỳ ý */
+  --btn-size: 44px;           /* kích thước hamburger/cart */
+
+  /* NEW: đệm trên/dưới header tách riêng */
+  --header-pad-top: 12px;     /* đệm trên quanh logo */
+  --header-pad-bottom: 12px;  /* đệm dưới quanh logo */
+
+  /* (tùy chọn) fallback nếu còn nơi nào đó dùng --header-vpad */
+  --header-vpad: 12px;
 }
 
 *{box-sizing:border-box}
@@ -109,7 +115,6 @@ nav > .cart-button{margin-left:16px}
 /* --- HEADER OVERRIDE (mới) --- */
 
 /* Header full-width + container không bó ngang */
-
 .site-header{
   position:sticky;
   top:0;
@@ -125,12 +130,15 @@ nav > .cart-button{margin-left:16px}
   margin:0;
 }
 
-/* Topbar cao theo logo + đệm (KHÔNG còn height:64px nữa) */
+/* Topbar cao theo logo + đệm (bỏ height cố định) */
 .topbar{
   display:grid;
   grid-template-columns: var(--btn-size) 1fr var(--btn-size);
   align-items:center;
-  padding: var(--header-vpad) 0;
+
+  /* NEW: dùng top/bottom riêng; fallback sang --header-vpad nếu cần */
+  padding-top: var(--header-pad-top, var(--header-vpad));
+  padding-bottom: var(--header-pad-bottom, var(--header-vpad));
 }
 
 /* Nút icon trái/phải */
@@ -155,7 +163,7 @@ nav > .cart-button{margin-left:16px}
   max-width:none; /* vượt qua img{max-width:100%} khi cần */
 }
 
-/* Badge giỏ hàng (như cũ) */
+/* Badge giỏ hàng (như cũ) — override để đặt ở góc nút */
 .badge{
   position:absolute;top:-4px;right:-4px;
   min-width:16px;height:16px;padding:0 4px;border-radius:999px;
@@ -163,13 +171,18 @@ nav > .cart-button{margin-left:16px}
   display:none;
 }
 
-/* Mobile menu slide (giữ như cũ) */
+/* Mobile menu slide */
 .mobile-menu{transform:translateX(-100%);transition:transform .3s ease}
 .mobile-menu.open{transform:translateX(0)}
 
-/* Gợi ý: logo lớn hơn trên mobile */
+/* Gợi ý: logo + đệm lớn hơn trên mobile */
 @media(max-width:600px){
-  :root{ --logo-size:120px; }
+  :root{
+    --logo-size:120px;
+    /* tuỳ ý tinh chỉnh riêng trên mobile */
+    --header-pad-top: 16px;
+    --header-pad-bottom: 12px;
+  }
 }
 
 @media(min-width:601px){
