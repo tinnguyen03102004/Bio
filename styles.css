@@ -6,15 +6,15 @@
   --accent:#111111;
 
   /* === Điều khiển kích thước header/logo bằng biến === */
-  --logo-size: 72px;          /* đổi 56 / 64 / 72 tuỳ ý */
+  --logo-size: 144px;         /* tăng gấp đôi kích cỡ logo */
   --btn-size: 44px;           /* kích thước hamburger/cart */
 
   /* NEW: đệm trên/dưới header tách riêng */
-  --header-pad-top: 50px;     /* đệm trên quanh logo */
-  --header-pad-bottom: 50px;  /* đệm dưới quanh logo */
+  --header-pad-top: 20px;     /* đệm trên quanh logo */
+  --header-pad-bottom: 20px;  /* đệm dưới quanh logo */
 
   /* (tùy chọn) fallback nếu còn nơi nào đó dùng --header-vpad */
-  --header-vpad: 50px;
+  --header-vpad: 20px;
 }
 
 *{box-sizing:border-box}
@@ -179,10 +179,10 @@ nav > .cart-button{margin-left:16px}
 /* Gợi ý: logo + đệm lớn hơn trên mobile */
 @media(max-width:600px){
   :root{
-    --logo-size:120px;
+    --logo-size:240px;
     /* tuỳ ý tinh chỉnh riêng trên mobile */
-    --header-pad-top: 50px;
-    --header-pad-bottom: 50px;
+    --header-pad-top: 20px;
+    --header-pad-bottom: 20px;
   }
 }
 
