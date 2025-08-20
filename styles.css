@@ -177,5 +177,5 @@ nav > .cart-button{margin-left:16px}
 
 /* Gợi ý: logo nhỏ hơn trên mobile */
 @media(max-width:600px){
-  :root{ --logo-size:56px; }
+  :root{ --logo-size:72px; }
 }
