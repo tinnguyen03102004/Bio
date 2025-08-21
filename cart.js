@@ -15,28 +15,28 @@ const PRODUCTS = [
     id: 'studios-basic-tee-white',
     name: 'Studios Basic T‑Shirt (White)',
     price: 390000,
-    image: 'assets/p1.png',
+    image: '/assets/p1.png',
     description: 'Chiếc áo thun trắng tối giản phù hợp mọi hoàn cảnh.'
   },
   {
     id: 'studios-basic-tee-black',
     name: 'Studios Basic T‑Shirt (Black)',
     price: 390000,
-    image: 'assets/p2.png',
+    image: '/assets/p2.png',
     description: 'Phiên bản màu đen của mẫu áo thun cơ bản.'
   },
   {
     id: 'studios-cap',
     name: 'Studios Cap',
     price: 320000,
-    image: 'assets/p3.png',
+    image: '/assets/p3.png',
     description: 'Mũ lưỡi trai phong cách thể thao.'
   },
   {
     id: 'studios-hoodie',
     name: 'Studios Hoodie',
     price: 690000,
-    image: 'assets/p4.png',
+    image: '/assets/p4.png',
     description: 'Áo hoodie ấm áp cho mùa lạnh.'
   }
 ];
@@ -65,8 +65,6 @@ function qsa(sel) {
 ------------------------*/
 
 let cart = loadCart(); // [{id, name, price, image, size, qty}]
-let selectedProduct = null;
-let selectedSize = null;
 
 /* -----------------------
    STORAGE
@@ -117,7 +115,7 @@ function renderProductGrid() {
   if (!grid) return;
 
   grid.innerHTML = PRODUCTS.map(p => `
-    <article class="card" data-id="${p.id}">
+    <a class="card" href="products/product.html?id=${p.id}">
       <div class="thumb">
         <img src="${p.image}" alt="${p.name}">
       </div>
@@ -125,105 +123,9 @@ function renderProductGrid() {
         <h3 class="name">${p.name}</h3>
         <div class="price">${price(p.price)}</div>
       </div>
-      <button class="add quick" aria-label="Xem nhanh ${p.name}">Xem nhanh</button>
-    </article>
+    </a>
   `).join('');
-
-  // Click vào card hoặc nút "Xem nhanh" => mở modal
-  grid.addEventListener('click', (e) => {
-    const card = e.target.closest('.card');
-    if (!card) return;
-    const id = card.getAttribute('data-id');
-    const product = PRODUCTS.find(x => x.id === id);
-    if (!product) return;
-
-    openProductModal(product);
-  });
 }
-
-/* -----------------------
-   PRODUCT MODAL
-------------------------*/
-
-const modal = qs('#productModal');
-const modalOverlay = qs('#productOverlay');
-
-function openProductModal(product) {
-  selectedProduct = product;
-  selectedSize = null;
-
-  const img = qs('#detailImage');
-  const name = qs('#detailName');
-  const p = qs('#detailPrice');
-  const desc = qs('#detailDesc');
-  const sizes = qs('#detailSizes');
-
-  if (img) img.src = product.image;
-  if (name) name.textContent = product.name;
-  if (p) p.textContent = price(product.price);
-  if (desc) desc.textContent = product.description || '';
-
-  if (sizes) {
-    sizes.innerHTML = SIZES
-      .map(s => `<button class="size-btn" data-size="${s}">${s}</button>`)
-      .join('');
-    sizes.addEventListener('click', onSizeClick, { once: true });
-  }
-
-  modal?.classList.add('open');
-  modalOverlay?.classList.add('open');
-
-  // Add CTA dưới cùng modal
-  ensureModalCTA();
-}
-
-function closeProductModal() {
-  modal?.classList.remove('open');
-  modalOverlay?.classList.remove('open');
-  selectedProduct = null;
-  selectedSize = null;
-}
-
-function onSizeClick(e) {
-  const btn = e.target.closest('.size-btn');
-  if (!btn) return;
-  qsa('.size-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  selectedSize = btn.getAttribute('data-size');
-}
-
-// Tạo vùng CTA nếu chưa có
-function ensureModalCTA() {
-  if (!modal) return;
-  let cta = modal.querySelector('.modal-cta');
-  if (!cta) {
-    cta = document.createElement('div');
-    cta.className = 'modal-cta';
-    cta.innerHTML = `
-      <button class="add-to-cart">Thêm vào giỏ</button>
-    `;
-    modal.appendChild(cta);
-  }
-  cta.querySelector('.add-to-cart')?.addEventListener('click', () => {
-    if (!selectedProduct) return;
-    if (!selectedSize) {
-      // nhắc chọn size
-      const sizes = qs('#detailSizes');
-      sizes?.classList.add('shake');
-      setTimeout(() => sizes?.classList.remove('shake'), 400);
-      return;
-    }
-    addToCart(selectedProduct, selectedSize);
-    closeProductModal();
-    openDrawer();
-  }, { once: true });
-}
-
-qs('#closeProduct')?.addEventListener('click', closeProductModal);
-modalOverlay?.addEventListener('click', closeProductModal);
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') closeProductModal();
-});
 
 /* -----------------------
    CART (DRAWER)
