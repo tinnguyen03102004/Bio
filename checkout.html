@@ -83,17 +83,17 @@
     if(order.items.length===0){
       sumEl.innerHTML = '<p class="small">Giỏ hàng trống. <a href="index.html">Mua hàng</a></p>';
     }else{
-      sumEl.innerHTML = order.items.map(item => `
-        <div class="line">
-          <img src="${item.image}" alt="${item.name}">
-          <div class="meta">
-            <div><strong>${item.name}</strong></div>
-            <div class="small">Size: ${item.size || '-'}</div>
-            <div class="small">x${item.qty}</div>
+        sumEl.innerHTML = order.items.map(item => `
+          <div class="line">
+            <img src="${item.image.replace(/^(\.\.\/)+/, '')}" alt="${item.name}">
+            <div class="meta">
+              <div><strong>${item.name}</strong></div>
+              <div class="small">Size: ${item.size || '-'}</div>
+              <div class="small">x${item.qty}</div>
+            </div>
+            <div><strong>${formatCurrency(item.price*item.qty)}</strong></div>
           </div>
-          <div><strong>${formatCurrency(item.price*item.qty)}</strong></div>
-        </div>
-      `).join('');
+        `).join('');
     }
     document.getElementById('grandTotal').textContent = formatCurrency(order.total);
 
