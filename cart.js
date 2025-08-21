@@ -15,33 +15,35 @@ const PRODUCTS = [
     id: 'studios-basic-tee-white',
     name: 'Studios Basic T‑Shirt (White)',
     price: 390000,
-    image: '/assets/p1.png',
+    image: 'assets/p1.png',
     description: 'Chiếc áo thun trắng tối giản phù hợp mọi hoàn cảnh.'
   },
   {
     id: 'studios-basic-tee-black',
     name: 'Studios Basic T‑Shirt (Black)',
     price: 390000,
-    image: '/assets/p2.png',
+    image: 'assets/p2.png',
     description: 'Phiên bản màu đen của mẫu áo thun cơ bản.'
   },
   {
     id: 'studios-cap',
     name: 'Studios Cap',
     price: 320000,
-    image: '/assets/p3.png',
+    image: 'assets/p3.png',
     description: 'Mũ lưỡi trai phong cách thể thao.'
   },
   {
     id: 'studios-hoodie',
     name: 'Studios Hoodie',
     price: 690000,
-    image: '/assets/p4.png',
+    image: 'assets/p4.png',
     description: 'Áo hoodie ấm áp cho mùa lạnh.'
   }
 ];
 
 const SIZES = ['S', 'M', 'L', 'XL'];
+
+const ASSET_PREFIX = location.pathname.includes('/products/') ? '../' : '';
 
 const CURRENCY_FORMATTER = new Intl.NumberFormat('vi-VN', {
   style: 'currency',
@@ -117,7 +119,7 @@ function renderProductGrid() {
   grid.innerHTML = PRODUCTS.map(p => `
     <a class="card" href="products/product.html?id=${p.id}">
       <div class="thumb">
-        <img src="${p.image}" alt="${p.name}">
+        <img src="${ASSET_PREFIX}${p.image}" alt="${p.name}">
       </div>
       <div class="meta">
         <h3 class="name">${p.name}</h3>
@@ -211,7 +213,7 @@ function renderCart() {
 
   list.innerHTML = cart.map(it => `
     <div class="cart-row" data-id="${it.id}" data-size="${it.size}">
-      <img class="cart-thumb" src="${it.image}" alt="${it.name}">
+      <img class="cart-thumb" src="${ASSET_PREFIX}${it.image}" alt="${it.name}">
       <div class="cart-info">
         <div class="cart-name">${it.name}</div>
         <div class="cart-opts small">Size: <strong>${it.size}</strong></div>

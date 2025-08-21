@@ -10,7 +10,7 @@ if (product) {
   const sizes = document.getElementById('prodSizes');
   const addBtn = document.getElementById('addBtn');
 
-  img.src = product.image;
+  img.src = ASSET_PREFIX + product.image;
   img.alt = product.name;
   name.textContent = product.name;
   priceEl.textContent = price(product.price);
