@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chi tiết sản phẩm</title>
+  <link rel="stylesheet" href="../styles.css">
+  <meta name="description" content="Kadie.Nuwrld — minimal street-chic apparel.">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="topbar" aria-label="Primary">
+        <button class="icon-btn" id="menuBtn" aria-label="Mở menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <path d="M3 6h18M3 12h18M3 18h18" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <a class="brand-center" href="../index.html" aria-label="Trang chủ Kadie.Nuwrld">
+          <img class="brand-mark" src="../logo.png" alt="">
+        </a>
+        <div class="nav-links">
+          <a class="nav-link" href="#">.STUDIOS</a>
+          <a class="nav-link" href="#">CAPSULE</a>
+          <a class="nav-link" href="#">SPORTS</a>
+        </div>
+        <button class="icon-btn" id="openCart" aria-label="Mở giỏ hàng">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+            <path d="M6 6h15l-1.5 9h-12z" stroke-width="1.6" stroke-linejoin="round"/>
+            <circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/>
+            <path d="M6 6l-2-2H2" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <span class="badge" id="cartCount" aria-live="polite">0</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="product-detail container">
+      <div class="gallery">
+        <img id="prodImage" src="" alt="">
+      </div>
+      <div class="info">
+        <h1 id="prodName"></h1>
+        <div id="prodPrice"></div>
+        <p id="prodDesc" class="desc"></p>
+        <div class="size-row" id="prodSizes"></div>
+        <button class="add-btn" id="addBtn">Thêm vào giỏ</button>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer small">
+    © <span id="y"></span> Kadie.Nuwrld · Static shop (COD + MoMo)
+  </footer>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <header>
+      <img src="../logo.png" alt="Kadie.Nuwrld logo">
+      <button class="close-mobile-menu" id="closeMobileMenu">&times;</button>
+    </header>
+    <nav class="menu-links">
+      <a href="#" class="active">Studios</a>
+      <a href="#">Capsule</a>
+      <a href="#">Sports</a>
+      <a href="#">Log in</a>
+      <a href="#">Create account</a>
+    </nav>
+  </div>
+
+  <div class="drawer-overlay" id="overlay"></div>
+  <aside class="drawer" id="drawer">
+    <header>
+      <strong>Giỏ hàng</strong>
+      <button class="cart-button" id="closeCart">&times;</button>
+    </header>
+    <div class="items" id="cartItems"></div>
+    <div class="subtotal">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span>Tạm tính</span>
+        <strong id="subtotal">0₫</strong>
+      </div>
+      <p class="small">Phí ship tính ở bước tiếp theo</p>
+    </div>
+    <a class="checkout" href="../checkout.html">Thanh toán →</a>
+  </aside>
+
+  <script src="../cart.js"></script>
+  <script src="product.js"></script>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.add('open');
+    });
+    const closeMobileMenu = document.getElementById('closeMobileMenu');
+    closeMobileMenu.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+    });
+  </script>
+</body>
+</html>
