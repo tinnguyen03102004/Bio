@@ -15,25 +15,29 @@ const PRODUCTS = [
     id: 'studios-basic-tee-white',
     name: 'Studios Basic T‑Shirt (White)',
     price: 390000,
-    image: 'assets/p1.png'
+    image: 'assets/p1.png',
+    description: 'Chiếc áo thun trắng tối giản phù hợp mọi hoàn cảnh.'
   },
   {
     id: 'studios-basic-tee-black',
     name: 'Studios Basic T‑Shirt (Black)',
     price: 390000,
-    image: 'assets/p2.png'
+    image: 'assets/p2.png',
+    description: 'Phiên bản màu đen của mẫu áo thun cơ bản.'
   },
   {
     id: 'studios-cap',
     name: 'Studios Cap',
     price: 320000,
-    image: 'assets/p3.png'
+    image: 'assets/p3.png',
+    description: 'Mũ lưỡi trai phong cách thể thao.'
   },
   {
     id: 'studios-hoodie',
     name: 'Studios Hoodie',
     price: 690000,
-    image: 'assets/p4.png'
+    image: 'assets/p4.png',
+    description: 'Áo hoodie ấm áp cho mùa lạnh.'
   }
 ];
 
@@ -151,11 +155,13 @@ function openProductModal(product) {
   const img = qs('#detailImage');
   const name = qs('#detailName');
   const p = qs('#detailPrice');
+  const desc = qs('#detailDesc');
   const sizes = qs('#detailSizes');
 
   if (img) img.src = product.image;
   if (name) name.textContent = product.name;
   if (p) p.textContent = price(product.price);
+  if (desc) desc.textContent = product.description || '';
 
   if (sizes) {
     sizes.innerHTML = SIZES

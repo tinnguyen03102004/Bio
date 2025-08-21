@@ -86,14 +86,24 @@ nav > .cart-button{margin-left:16px}
 .checkout{margin:0 16px 14px 16px;padding:12px;border:1px solid var(--line);border-radius:14px;background:#111;color:#fff;cursor:pointer;text-align:center}
 .badge{display:inline-block;border:1px solid var(--line);padding:4px 8px;border-radius:999px;font-size:11px;margin-left:8px}
 
-.product-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);opacity:0;pointer-events:none;transition:.2s}
+.cart-row{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
+.cart-thumb{width:64px;height:64px;object-fit:cover;border-radius:8px;border:1px solid var(--line)}
+.cart-info{flex:1}
+.cart-name{font-weight:600;margin-bottom:4px}
+.cart-qty{display:flex;align-items:center;gap:8px;margin-top:6px}
+.cart-qty button{width:28px;height:28px;border:1px solid var(--line);border-radius:6px;background:#fff;cursor:pointer}
+.cart-qty .q{width:28px;height:28px;display:grid;place-items:center}
+.remove{border:1px solid var(--line);border-radius:6px;width:28px;height:28px;background:#fff;cursor:pointer}
+
+.product-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);opacity:0;pointer-events:none;transition:.25s;z-index:2100}
 .product-overlay.open{opacity:1;pointer-events:auto}
-.product-modal{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;width:90%;max-width:400px;max-height:90%;overflow:auto;opacity:0;pointer-events:none;transition:.2s}
-.product-modal.open{opacity:1;pointer-events:auto}
+.product-modal{position:fixed;top:0;left:0;width:100%;height:100%;background:#fff;transform:translateX(-100%);transition:transform .25s ease;overflow:auto;pointer-events:none;z-index:2101;padding:20px}
+.product-modal.open{transform:translateX(0);pointer-events:auto}
 .product-modal img{border:1px solid var(--line);border-radius:8px;margin-bottom:12px}
-.product-modal .close-product{position:absolute;top:8px;right:8px;background:none;border:none;font-size:24px;cursor:pointer}
+.product-modal .close-product{position:absolute;top:10px;right:10px;background:none;border:none;font-size:28px;cursor:pointer}
 .product-modal h3{margin:0 0 8px 0}
 .product-modal #detailPrice{margin-bottom:12px}
+.product-modal .desc{margin-bottom:12px;color:var(--muted)}
 
 @media(max-width:600px){
   .nav-links{display:none;}
