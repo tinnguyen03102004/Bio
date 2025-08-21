@@ -10,8 +10,8 @@
   --btn-size: 44px;           /* kích thước hamburger/cart */
 
   /* NEW: đệm trên/dưới header tách riêng */
-  --header-pad-top: 20px;     /* đệm trên quanh logo */
-  --header-pad-bottom: 20px;  /* đệm dưới quanh logo */
+  --header-pad-top: 0;     /* đệm trên quanh logo */
+  --header-pad-bottom: 0;  /* đệm dưới quanh logo */
 
   /* (tùy chọn) fallback nếu còn nơi nào đó dùng --header-vpad */
   --header-vpad: 20px;
@@ -96,10 +96,13 @@ nav > .cart-button{margin-left:16px}
 
 @media(max-width:600px){
   .nav-links{display:none;}
-  .hero{padding-top:0}
-  .grid{display:flex;overflow-x:auto;gap:16px;padding:24px 20px}
-  .grid .card{flex:0 0 80%}
-  .page-title{font-size:32px}
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    padding:16px;
+  }
+  .grid .card{width:100%}
   .checkout-layout{grid-template-columns:1fr}
   .two-col{grid-template-columns:1fr}
 
@@ -181,8 +184,8 @@ nav > .cart-button{margin-left:16px}
   :root{
     --logo-size:240px;
     /* tuỳ ý tinh chỉnh riêng trên mobile */
-    --header-pad-top: 20px;
-    --header-pad-bottom: 20px;
+    --header-pad-top: 0;
+    --header-pad-bottom: 0;
   }
 }
 
