@@ -90,7 +90,8 @@ function saveCart() {
 const cartCountEl = qs('#cartCount');
 
 // Cho phép các file khác gọi updateCartCount (nếu cần)
-window.updateCartCount = function (n) {
+// n mặc định = tổng hiện tại trong giỏ
+window.updateCartCount = function (n = getCartCount()) {
   if (!cartCountEl) return;
   cartCountEl.textContent = n;
   cartCountEl.style.display = n > 0 ? 'inline-block' : 'none';
