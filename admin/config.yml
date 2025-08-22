@@ -1,0 +1,40 @@
+backend:
+  name: github
+  repo: tinnguyen03102004/Bio
+  branch: main
+  base_url: https://bio-oauth.vercel.app
+
+media_folder: static/uploads
+public_folder: /uploads
+
+collections:
+  - name: products
+    label: Products
+    folder: content/products
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Slug", name: "slug", widget: "string"}
+      - {label: "Price", name: "price", widget: "number"}
+      - {label: "Compare at Price", name: "compare_at_price", widget: "number", required: false}
+      - {label: "Buy URL", name: "buy_url", widget: "string"}
+      - {label: "Featured Image", name: "featured_image", widget: "image"}
+      - {label: "Gallery", name: "gallery", widget: "list", field: {label: "Image", name: "image", widget: "image"}}
+      - label: "Attributes"
+        name: "attributes"
+        widget: "object"
+        fields:
+          - {label: "Material", name: "material", widget: "string"}
+          - {label: "Fit", name: "fit", widget: "string"}
+          - {label: "Care", name: "care", widget: "string"}
+          - {label: "Made in", name: "made_in", widget: "string"}
+      - {label: "Variants", name: "variants", widget: "list", fields: [{label: "Name", name: "name", widget: "string"}, {label: "SKU", name: "sku", widget: "string"}, {label: "Price", name: "price", widget: "number"}]}
+      - {label: "Tags", name: "tags", widget: "list"}
+      - label: "SEO"
+        name: "seo"
+        widget: "object"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Description", name: "description", widget: "string"}
+      - {label: "Body", name: "body", widget: "markdown"}
