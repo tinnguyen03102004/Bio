@@ -1,35 +1,25 @@
 ---
-title: "Studios Basic T-shirt"
-slug: "studios-basic-t-shirt"
+title: "Studios Basic T‑Shirt"
+slug: "studios-basic-tshirt"
 price: 350000
-compare_at_price: 550000
-buy_url: "https://hellstar.com/products/studios-basic-t-shirt"
-featured_image: "/uploads/studios-basic-t-shirt.jpg"
+compare_at_price: 0
+buy_url: "https://example.com/buy"
+featured_image: "/uploads/sample.jpg"
 gallery:
-  - "/uploads/studios-basic-t-shirt-1.jpg"
-  - "/uploads/studios-basic-t-shirt-2.jpg"
+  - image: "/uploads/sample.jpg"
 attributes:
-  material: "100% cotton"
-  fit: "Regular fit"
+  material: "Cotton"
+  fit: "Regular"
   care: "Machine wash cold"
   made_in: "Vietnam"
 variants:
-  - name: "Small"
-    sku: "SBTS-S"
+  - name: "M"
+    sku: "TSHIRT-M"
     price: 350000
-  - name: "Medium"
-    sku: "SBTS-M"
-    price: 350000
-  - name: "Large"
-    sku: "SBTS-L"
-    price: 350000
-tags:
-  - "t-shirt"
-  - "studios"
+tags: ["tshirt", "basic"]
 seo:
-  title: "Studios Basic T-shirt – Kadie.Nuwrld"
-  description: "Minimal classic tee with a regular fit."
+  title: "Studios Basic T‑Shirt"
+  description: "Basic tee for everyday wear."
 ---
 
-A minimal tee featuring the Studios logo printed on the chest.
-Crafted from soft cotton jersey for everyday comfort.
+Mô tả chi tiết sản phẩm. Bạn có thể sửa trong CMS.
