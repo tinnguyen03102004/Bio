@@ -1,12 +1,74 @@
 <!doctype html>
-<html lang="en">
+<html lang="vi">
   <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <title>Content Manager</title>
   </head>
   <body>
-    <!-- Decap (Netlify) CMS -->
+    <script>
+      // Toàn bộ cấu hình CMS để inline, không cần config.yml nữa
+      window.CMS_CONFIG = {
+        backend: {
+          name: "github",
+          repo: "tinnguyen03102004/Bio",
+          branch: "main",
+          base_url: "https://netlify-cms-oauth-ten.vercel.app"
+        },
+        media_folder: "static/uploads",
+        public_folder: "/uploads",
+        publish_mode: "editorial_workflow",
+        slug: { clean_accents: true, sanitize_replacement: "-", encoding: "unicode" },
+        collections: [
+          {
+            name: "products",
+            label: "Products",
+            folder: "content/products",
+            create: true,
+            format: "frontmatter",
+            extension: "md",
+            identifier_field: "slug",
+            path: "{{slug}}",
+            fields: [
+              { label: "Title", name: "title", widget: "string" },
+              { label: "Slug", name: "slug", widget: "string", hint: "Không dấu, dùng -"},
+              { label: "Price", name: "price", widget: "number", value_type: "float", min: 0 },
+              { label: "Compare at Price", name: "compare_at_price", widget: "number", required: false },
+              { label: "Buy URL", name: "buy_url", widget: "string" },
+              { label: "Featured Image", name: "featured_image", widget: "image" },
+              { label: "Gallery", name: "gallery", widget: "list", field: { label: "Image", name: "image", widget: "image" } },
+              {
+                label: "Attributes", name: "attributes", widget: "object",
+                fields: [
+                  { label: "Material", name: "material", widget: "string" },
+                  { label: "Fit", name: "fit", widget: "string" },
+                  { label: "Care", name: "care", widget: "string" },
+                  { label: "Made in", name: "made_in", widget: "string" }
+                ]
+              },
+              {
+                label: "Variants", name: "variants", widget: "list",
+                fields: [
+                  { label: "Name", name: "name", widget: "string" },
+                  { label: "SKU", name: "sku", widget: "string" },
+                  { label: "Price", name: "price", widget: "number", value_type: "float", min: 0 }
+                ]
+              },
+              { label: "Tags", name: "tags", widget: "list" },
+              {
+                label: "SEO", name: "seo", widget: "object",
+                fields: [
+                  { label: "Title", name: "title", widget: "string" },
+                  { label: "Description", name: "description", widget: "string" }
+                ]
+              },
+              { label: "Body", name: "body", widget: "markdown" }
+            ]
+          }
+        ]
+      };
+    </script>
+    <!-- Decap CMS -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   </body>
 </html>
