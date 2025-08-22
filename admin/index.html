@@ -1,24 +1,44 @@
-window.CMS_CONFIG = {
-  backend: { name: "github", repo: "tinnguyen03102004/Bio", branch: "main", base_url: "https://netlify-cms-oauth-ten.vercel.app" },
-  media_folder: "static/uploads",
-  public_folder: "/uploads",
-  collections: [
-    {
-      name: "products",
-      label: "Products",
-      folder: "content/products",
-      create: true,
-      format: "frontmatter",
-      extension: "md",
-      identifier_field: "slug",
-      path: "{{slug}}",
-      fields: [
-        { label: "Title", name: "title", widget: "string" },
-        { label: "Slug", name: "slug", widget: "string" },
-        { label: "Price", name: "price", widget: "number", value_type: "float", min: 0 },
-        { label: "Featured Image", name: "featured_image", widget: "image" },
-        { label: "Body", name: "body", widget: "markdown" }
-      ]
-    }
-  ]
-};
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Content Manager</title>
+  </head>
+  <body>
+    <script>
+      // Inline config: KHÔNG cần config.yml nữa
+      window.CMS_CONFIG = {
+        backend: {
+          name: "github",
+          repo: "tinnguyen03102004/Bio",
+          branch: "main",
+          base_url: "https://netlify-cms-oauth-ten.vercel.app"
+        },
+        media_folder: "static/uploads",
+        public_folder: "/uploads",
+        collections: [
+          {
+            name: "products",
+            label: "Products",
+            folder: "content/products",
+            create: true,
+            format: "frontmatter",
+            extension: "md",
+            identifier_field: "slug",
+            path: "{{slug}}",
+            fields: [
+              { label: "Title", name: "title", widget: "string" },
+              { label: "Slug", name: "slug", widget: "string" },
+              { label: "Price", name: "price", widget: "number", value_type: "float", min: 0 },
+              { label: "Featured Image", name: "featured_image", widget: "image" },
+              { label: "Body", name: "body", widget: "markdown" }
+            ]
+          }
+        ]
+      };
+    </script>
+    <!-- NẠP Decap CMS -->
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  </body>
+</html>
